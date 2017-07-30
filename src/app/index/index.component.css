@@ -1,0 +1,52 @@
+.page2{
+  background-color: white;
+  height: 100%;
+}
+.page1{
+    padding-top: 20px;
+    background-color: crimson;
+    height: 100%;
+}
+
+p{
+  color: white; 
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Helvetica', 'Arial', sans-serif;  
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 25ch;
+  animation: type 2s steps(60, end); 
+  animation-fill-mode: both;
+}
+
+p:nth-child(1){
+  font-size: 2em;
+}
+p:nth-child(2){
+  animation-delay: 2s;
+}
+p:nth-child(3){
+  animation-delay: 4s;
+}
+p:nth-child(4){
+  animation-delay: 6s;
+}
+
+p a{
+  color: lime;
+  text-decoration: none;
+}
+
+.blinkspan{
+  animation: blink 1s infinite;
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes blink{
+  to{opacity: .0;}
+}

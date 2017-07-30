@@ -1,0 +1,19 @@
+<div class="page1">
+  <p>Hi, {{user}}</p>
+  <p>How are you?<span class="blinkspan">|</span></p> 
+  <div class="row" style="margin-top:10%; margin-left:0px;margin-right:0px;">
+    <div class="col-md-3 col-1"></div>
+    <div class="col-md-6 col-10" style="padding:10px 10px 10px 10px;background-color:white">
+      <form class="input-group">
+        <input type="text" name="typedInput" placeholder="Talk to Me" class="form-control">
+        <span class="input-group-btn">
+          <button type="submit" (click)="togglePage2()" class="btn btn-secondary" style="cursor:pointer">Talk</button>
+        </span>
+      </form>
+    </div>
+    <div class="col-md-3 col-1"></div>
+  </div>
+</div>
+<div class="page2" *ngIf="talkButtonClicked" id="page2">
+
+</div>
