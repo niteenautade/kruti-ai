@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         let e:any = this._inputElement.nativeElement;
-       let time=35;
+       let time=45;
        console.log('TIme:',time)
        
         let myTimer=setInterval(function(){
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
           console.log('TIme:',time)
          if(time>=0) {
            time--;
-          if(time%2==0 && time < 14){
+          if(time%2==0 && time < 20){
             console.log('focus')
               e.focus();
           }
@@ -52,6 +52,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
       this.arr.push('How Are you?');
       this.arr.push('I am Kruti - An Artificially Intelligent System');
       this.arr.push('I was designed to talk to you about my creator @niteenautade');
+      this.arr.push('Let\'s Talk. Try asking me something about my master in the box below');
     });
     this.contents = this.tws.format(this.arr); 
   }
