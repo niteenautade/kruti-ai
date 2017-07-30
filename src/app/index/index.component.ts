@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,ElementRef,ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import {ScrollToModule} from 'ng2-scroll-to';
@@ -10,7 +10,37 @@ import { TypewriterService, TypewriterContent } from "ng2-typewriter";
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, AfterViewInit {
+ @ViewChild("talkInput")
+    private _inputElement: ElementRef;
+
+    ngAfterViewInit(): void {
+        let e:any = this._inputElement.nativeElement;
+       let time=35;
+       console.log('TIme:',time)
+       
+        let myTimer=setInterval(function(){
+              fun();
+          }, 500);
+        
+        function fun(){
+          console.log('TIme:',time)
+         if(time>=0) {
+           time--;
+          if(time%2==0 && time < 14){
+            console.log('focus')
+              e.focus();
+          }
+            if(time%2!=0) {
+              console.log('no focus')
+              e.blur();
+            }
+         }
+          else clearInterval(myTimer);
+        }
+
+    }
+
   contents: TypewriterContent[] = [];
   arr=[];
   constructor(private _http:Http,private route: ActivatedRoute,private tws: TypewriterService) {

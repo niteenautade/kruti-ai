@@ -15,4 +15,12 @@
   font-size: 5em;
   color:yellow;
 }
-
+.talkInput{
+    -webkit-transition: box-shadow blinker linear 0.5s;
+    transition: box-shadow blinker linear 0.5s;
+}
+.talkInput:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
