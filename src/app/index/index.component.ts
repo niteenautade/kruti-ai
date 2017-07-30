@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
+import {ScrollToModule} from 'ng2-scroll-to';
 
 @Component({
   selector: 'app-index',
@@ -21,6 +22,7 @@ export class IndexComponent implements OnInit {
     });
   }
   togglePage2(){
+    console.log("Toggle Page 2")
     this.talkButtonClicked = true;
   }
 

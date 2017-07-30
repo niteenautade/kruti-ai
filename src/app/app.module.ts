@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
+import {ScrollToModule} from 'ng2-scroll-to';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    ScrollToModule.forRoot(),
     FormsModule,
     HttpModule
   ],
