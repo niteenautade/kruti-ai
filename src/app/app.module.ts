@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import {ScrollToModule} from 'ng2-scroll-to';
+import { TypewriterModule } from "ng2-typewriter";
+import { TypewriterService, TypewriterContent } from "ng2-typewriter";
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
@@ -23,9 +25,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ScrollToModule.forRoot(),
     FormsModule,
-    HttpModule
+    HttpModule,
+    TypewriterModule
   ],
-  providers: [],
+  providers: [TypewriterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

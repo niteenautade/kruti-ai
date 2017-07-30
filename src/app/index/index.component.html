@@ -1,6 +1,15 @@
 <div class="page1">
-  <p>Hi, {{user}}</p>
-  <p>How are you?<span class="blinkspan">|</span></p> 
+  <div class="row">
+    <div class="col-md-3 col-1"></div>
+    <div class="col-md-6 col-10">
+      <div class="text-center typeWriter">
+        <typewriter [contents]="contents" [erasable]="false" [beforeType]="500" [beforeStart]="0" [afterEnd]="1000" [delay]="0"
+        [speed]="40" [cursor]="'|'" [cursorDelay]="-1">
+        </typewriter>
+      </div>
+    </div>
+    <div class="col-md-3 col-1"></div>
+  </div>
   <div class="row" style="margin-top:10%; margin-left:0px;margin-right:0px;">
     <div class="col-md-3 col-1"></div>
     <div class="col-md-6 col-10" style="padding:10px 10px 10px 10px;background-color:white">
