@@ -8,17 +8,20 @@ import { IndexComponent } from './index/index.component';
 import {ScrollToModule} from 'ng2-scroll-to';
 import { TypewriterModule } from "ng2-typewriter";
 import { TypewriterService, TypewriterContent } from "ng2-typewriter";
+import { SendableLinkComponent } from './sendable-link/sendable-link.component';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'u/:id', component: IndexComponent },
+  { path: 'sendableLink', component: SendableLinkComponent},
   { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
+    SendableLinkComponent
   ],
   imports: [
     BrowserModule,

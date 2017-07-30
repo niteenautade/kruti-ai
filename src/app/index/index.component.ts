@@ -17,7 +17,7 @@ export class IndexComponent implements OnInit {
     this.route.params.subscribe(params => {
       if(params['id'])
       this.user=atob(params['id']);
-      let temp = '<div style="font-size:1.5em;">Hi, '+this.user+'</div>'
+      let temp = '<div style="font-size:1.5em;font-weight:bold;">Hi, '+this.user+'</div>'
       this.arr.push(temp);
       this.arr.push('How Are you?');
       this.arr.push('I am Kruti - An Artificially Intelligent System');
