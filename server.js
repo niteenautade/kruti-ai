@@ -12,7 +12,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var configDB = require('./config/database.js');
-
+var krutiai = require('./config/krutiai');
+//krutiai.getResponseFromKruti('how are you?','Tml0ZWVuIEF1dGFkZQ==')
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
@@ -23,7 +24,7 @@ app.use(bodyParser()); // get information from html forms
 
 // routes ======================================================================
 app.use('/', express.static(path.join(__dirname, '/src/app/dist')));
-require('./routes/routes.js')(app,path); // load our routes and pass in our app and fully configured passport
+require('./routes/routes.js')(app,path,krutiai); // load our routes and pass in our app and fully configured passport
 console.log('Buss',path.join(__dirname, '/src/app/dist/index.html'));
 
 // launch ======================================================================

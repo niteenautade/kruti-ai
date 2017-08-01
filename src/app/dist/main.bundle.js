@@ -64,7 +64,7 @@ module.exports = "<router-outlet></router-outlet>"
 /***/ 163:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n      <form class=\"input-group\">\n        <input type=\"text\" name=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput>\n        <span class=\"input-group-btn\">\n          <a scrollTo href=\"#page2\">\n          <button type=\"submit\" (click)=\"togglePage2()\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n          </a>\n        </span>\n      </form>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n\n</div>"
+module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n        <div [hidden]=\"!hideFirstTalkInputBox\">\n          <h3 style=\"margin-top: 30px;\">Hope You Had Fun Using This Application!</h3>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div [hidden]=\"hideFirstTalkInputBox\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n        <form class=\"input-group\" #talkForm=\"ngForm\">\n          <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput>\n          <span class=\"input-group-btn\">\n            <a scrollTo href=\"#page2\">\n            <button type=\"submit\" (click)=\"initialTalk(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n            </a>\n          </span>\n        </form>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n  <div class=\"row\" style=\"margin-top:20px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <form class=\"input-group\" (ngSubmit)=\"talkToKruti(talkForm.value)\" #talkForm=\"ngForm\">\n        <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput>\n        <span class=\"input-group-btn\">\n          <button type=\"submit\" (click)=\"talkToKruti(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n        </span>\n      </form>\n      <div>\n        <div *ngIf=\"data.result\">\n          {{data.result.fulfillment.speech}}\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -249,6 +249,8 @@ var IndexComponent = (function () {
         this.arr = [];
         this.user = '';
         this.talkButtonClicked = false;
+        this.hideFirstTalkInputBox = false;
+        this.data = '';
         this.route.params.subscribe(function (params) {
             if (params['id'])
                 _this.user = atob(params['id']);
@@ -263,32 +265,29 @@ var IndexComponent = (function () {
     }
     IndexComponent.prototype.ngAfterViewInit = function () {
         var e = this._inputElement.nativeElement;
-        var time = 40;
-        console.log('TIme:', time);
-        var myTimer = setInterval(function () {
-            fun();
-        }, 500);
-        function fun() {
-            console.log('TIme:', time);
-            if (time >= 0) {
-                time--;
-                if (time % 2 == 0 && time < 15) {
-                    console.log('focus');
-                    e.focus();
-                }
-                if (time % 2 != 0) {
-                    console.log('no focus');
-                    e.blur();
-                }
-            }
-            else
-                clearInterval(myTimer);
-        }
+        e.focus();
     };
     IndexComponent.prototype.ngOnInit = function () { };
     IndexComponent.prototype.togglePage2 = function () {
         console.log("Toggle Page 2");
         this.talkButtonClicked = true;
+    };
+    IndexComponent.prototype.initialTalk = function (data) {
+        var _this = this;
+        this._http.post('getResponse', data).subscribe(function (res) {
+            console.log('ress', res);
+            _this.data = res.json();
+        });
+        this.togglePage2();
+        this.hideFirstTalkInputBox = true;
+    };
+    IndexComponent.prototype.talkToKruti = function (data) {
+        var _this = this;
+        this._http.post('getResponse', data).subscribe(function (res) {
+            console.log('ress', res);
+            _this.data = res.json();
+        });
+        this.togglePage2();
     };
     return IndexComponent;
 }());

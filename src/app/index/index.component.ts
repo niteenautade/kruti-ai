@@ -16,29 +16,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         let e:any = this._inputElement.nativeElement;
-       let time=40;
-       console.log('TIme:',time)
-       
-        let myTimer=setInterval(function(){
-              fun();
-          }, 500);
-        
-        function fun(){
-          console.log('TIme:',time)
-         if(time>=0) {
-           time--;
-          if(time%2==0 && time < 15){
-            console.log('focus')
-              e.focus();
-          }
-            if(time%2!=0) {
-              console.log('no focus')
-              e.blur();
-            }
-         }
-          else clearInterval(myTimer);
-        }
-
+        e.focus();
     }
 
   contents: TypewriterContent[] = [];
@@ -56,12 +34,33 @@ export class IndexComponent implements OnInit, AfterViewInit {
     });
     this.contents = this.tws.format(this.arr); 
   }
-  user:string ='';
-  talkButtonClicked:boolean=false;
+  user                 : string  = '';
+  talkButtonClicked    : boolean = false;
+  hideFirstTalkInputBox: boolean = false;
+
   ngOnInit(){}
   togglePage2(){
     console.log("Toggle Page 2")
     this.talkButtonClicked = true;
   }
 
+  data='';
+  initialTalk(data){
+    this._http.post('getResponse',data).subscribe(
+      (res)=>{
+        console.log('ress',res)
+        this.data = res.json();
+      })
+    this.togglePage2();
+    this.hideFirstTalkInputBox = true;
+  }
+
+  talkToKruti(data){
+    this._http.post('getResponse',data).subscribe(
+      (res)=>{
+        console.log('ress',res)
+        this.data = res.json();
+      })
+    this.togglePage2();
+  }
 }

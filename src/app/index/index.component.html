@@ -6,25 +6,46 @@
         <typewriter [contents]="contents" [erasable]="false" [beforeType]="500" [beforeStart]="0" [afterEnd]="1000" [delay]="0"
         [speed]="40" [cursor]="'|'" [cursorDelay]="-1">
         </typewriter>
+        <div [hidden]="!hideFirstTalkInputBox">
+          <h3 style="margin-top: 30px;">Hope You Had Fun Using This Application!</h3>
+        </div>
       </div>
     </div>
     <div class="col-md-3 col-1"></div>
   </div>
   <div class="row" style="margin-top:10%; margin-left:0px;margin-right:0px;">
     <div class="col-md-3 col-1"></div>
-    <div class="col-md-6 col-10" style="padding:10px 10px 10px 10px;background-color:white">
-      <form class="input-group">
-        <input type="text" name="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput>
-        <span class="input-group-btn">
-          <a scrollTo href="#page2">
-          <button type="submit" (click)="togglePage2()" class="btn btn-secondary" style="cursor:pointer">Talk</button>
-          </a>
-        </span>
-      </form>
+    <div class="col-md-6 col-10">
+      <div [hidden]="hideFirstTalkInputBox" style="padding:10px 10px 10px 10px;background-color:white">
+        <form class="input-group" #talkForm="ngForm">
+          <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput>
+          <span class="input-group-btn">
+            <a scrollTo href="#page2">
+            <button type="submit" (click)="initialTalk(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
+            </a>
+          </span>
+        </form>
+      </div>
     </div>
     <div class="col-md-3 col-1"></div>
   </div>
 </div>
 <div class="page2" *ngIf="talkButtonClicked" id="page2">
-
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-3 col-1"></div>
+    <div class="col-md-6 col-10">
+      <form class="input-group" (ngSubmit)="talkToKruti(talkForm.value)" #talkForm="ngForm">
+        <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput>
+        <span class="input-group-btn">
+          <button type="submit" (click)="talkToKruti(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
+        </span>
+      </form>
+      <div>
+        <div *ngIf="data.result">
+          {{data.result.fulfillment.speech}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-1"></div>
+  </div>
 </div>
