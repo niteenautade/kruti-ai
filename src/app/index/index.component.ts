@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         let e:any = this._inputElement.nativeElement;
-       let time=45;
+       let time=40;
        console.log('TIme:',time)
        
         let myTimer=setInterval(function(){
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
           console.log('TIme:',time)
          if(time>=0) {
            time--;
-          if(time%2==0 && time < 20){
+          if(time%2==0 && time < 15){
             console.log('focus')
               e.focus();
           }

@@ -263,7 +263,7 @@ var IndexComponent = (function () {
     }
     IndexComponent.prototype.ngAfterViewInit = function () {
         var e = this._inputElement.nativeElement;
-        var time = 45;
+        var time = 40;
         console.log('TIme:', time);
         var myTimer = setInterval(function () {
             fun();
@@ -272,7 +272,7 @@ var IndexComponent = (function () {
             console.log('TIme:', time);
             if (time >= 0) {
                 time--;
-                if (time % 2 == 0 && time < 20) {
+                if (time % 2 == 0 && time < 15) {
                     console.log('focus');
                     e.focus();
                 }
