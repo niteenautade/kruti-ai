@@ -26,7 +26,7 @@ exports = module.exports = __webpack_require__(22)(false);
 
 
 // module
-exports.push([module.i, ".typeWriter{\r\n  color: white;\r\n  font-size: 1.1em;\r\n}\r\n.page2{\r\n  background-color: white;\r\n  height: 100%;\r\n}\r\n.page1{\r\n    padding-top: 20px;\r\n    background-color: crimson;\r\n    height: 100%;\r\n}\r\n.bigFont{\r\n  font-size: 5em;\r\n  color:yellow;\r\n}\r\n.talkInput{\r\n    transition: box-shadow blinker linear 0.5s;\r\n}\r\n.talkInput:focus { \r\n    outline: none;\r\n    border-color: #9ecaed;\r\n    box-shadow: 0 0 10px #9ecaed;\r\n}\r\n", ""]);
+exports.push([module.i, ".typeWriter{\r\n  color: white;\r\n  font-size: 1.1em;\r\n}\r\n.page2{\r\n  background-color: aliceblue;\r\n  min-height: 100%;\r\n}\r\n.page1{\r\n    padding-top: 20px;\r\n    background-color: crimson;\r\n    min-height: 100%;\r\n}\r\n.bigFont{\r\n  font-size: 5em;\r\n  color:yellow;\r\n}\r\n.talkInput{\r\n    transition: box-shadow blinker linear 0.5s;\r\n}\r\n.talkInput:focus { \r\n    outline: none;\r\n    border-color: #9ecaed;\r\n    box-shadow: 0 0 10px #9ecaed;\r\n}\r\nul{\r\n  list-style-type:none;\r\n  padding: 0;\r\n}\r\nli:nth-child(odd){\r\n  text-align: left;\r\n  position: relative;\r\n\tbackground: #19B5FE;\r\n  border-radius: .4em;\r\n  padding-left: 10%;\r\n  padding-right: 20%;\r\n  padding-top: 2px;\r\n  padding-bottom: 2px;\r\n  margin-bottom: 5px;\r\n}\r\nli:nth-child(odd):after{\r\n  content: '';\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\ttop: 50%;\r\n\twidth: 0;\r\n\theight: 0;\r\n\tborder: 7px solid transparent;\r\n\tborder-right-color: #19B5FE;\r\n\tborder-left: 0;\r\n\tborder-top: 0;\r\n\tmargin-top: -3.5px;\r\n\tmargin-left: -7px;\r\n}\r\nli:nth-child(even){\r\n  position: relative;\r\n  background: white;\r\n  border-radius: .4em;\r\n  padding-left: 20%;\r\n  padding-right: 10%;\r\n  padding-top: 2px;\r\n  padding-bottom: 2px;\r\n  margin-bottom: 5px;\r\n}\r\nli:nth-child(even):after{\r\n  content: '';\r\n\tposition: absolute;\r\n\tright: 0;\r\n\ttop: 50%;\r\n\twidth: 0;\r\n\theight: 0;\r\n\tborder: 7px solid transparent;\r\n\tborder-left-color: white;\r\n\tborder-right: 0;\r\n\tborder-top: 0;\r\n\tmargin-top: -3.5px;\r\n\tmargin-right: -7px;\r\n}", ""]);
 
 // exports
 
@@ -64,7 +64,7 @@ module.exports = "<router-outlet></router-outlet>"
 /***/ 163:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n        <div [hidden]=\"!hideFirstTalkInputBox\">\n          <h3 style=\"margin-top: 30px;\">Hope You Had Fun Using This Application!</h3>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div [hidden]=\"hideFirstTalkInputBox\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n        <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n          <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput1>\n          <span class=\"input-group-btn\">\n            <a scrollTo href=\"#page2\">\n            <button type=\"submit\" (click)=\"initialTalk(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n            </a>\n          </span>\n        </form>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n  <div class=\"row\" style=\"padding-top:30px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n        <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput2>\n        <span class=\"input-group-btn\">\n          <button type=\"submit\" (click)=\"talkToKruti(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n        </span>\n      </form>\n      <div>\n        <div *ngIf=\"data.result\" style=\"padding-top:20px;\">\n          {{data.result.fulfillment.speech}}\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>"
+module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n        <div [hidden]=\"!hideFirstTalkInputBox\">\n          <h3 style=\"margin-top: 30px;\">Hope You Had Fun Using This Application!</h3>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div [hidden]=\"hideFirstTalkInputBox\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n        <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n          <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput1>\n          <span class=\"input-group-btn\">\n            <a scrollTo href=\"#page2\">\n            <button type=\"submit\" (click)=\"initialTalk(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n            </a>\n          </span>\n        </form>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n  <div class=\"row\" style=\"padding-top:30px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n        <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput2>\n        <span class=\"input-group-btn\">\n          <button type=\"submit\" (click)=\"talkToKruti(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n        </span>\n      </form>\n      <div>\n        <div *ngIf=\"chatArray.length > 0\" style=\"padding-top:20px;\">\n          <div class=\"row\">\n            <div class=\"col-md-2 col-1\"></div>\n            <div class=\"col-md-8 col-10\">\n              <ul>\n                <li *ngFor=\"let chat of chatArray;let index=index\">\n                  <div *ngIf=\"index%2==0\">You:</div>\n                  <div *ngIf=\"index%2!=0\">Kruti-AI:</div>\n                  <div>{{chat}}</div>\n                </li>\n              </ul>\n            </div>\n            <div class=\"col-md-2 col-1\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -245,12 +245,12 @@ var IndexComponent = (function () {
         this._http = _http;
         this.route = route;
         this.tws = tws;
-        this.focusTalkInput2 = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.contents = [];
         this.arr = [];
         this.user = '';
         this.talkButtonClicked = false;
         this.hideFirstTalkInputBox = false;
+        this.chatArray = [];
         this.data = '';
         this.route.params.subscribe(function (params) {
             if (params['id'])
@@ -279,11 +279,11 @@ var IndexComponent = (function () {
         this._http.post('getResponse', data).subscribe(function (res) {
             console.log('ress', res);
             _this.data = res.json();
+            _this.chatArray.push(_this.data['result']['resolvedQuery']);
+            _this.chatArray.push(_this.data['result']['fulfillment']['speech']);
         });
         this.togglePage2();
         this.hideFirstTalkInputBox = true;
-        this.focusTalkInput2.emit(true);
-        this._inputElement2.nativeElement.focus();
     };
     IndexComponent.prototype.talkToKruti = function (data) {
         var _this = this;
@@ -291,12 +291,9 @@ var IndexComponent = (function () {
         this._http.post('getResponse', data).subscribe(function (res) {
             console.log('ress', res);
             _this.data = res.json();
+            _this.chatArray.push(_this.data['result']['resolvedQuery']);
+            _this.chatArray.push(_this.data['result']['fulfillment']['speech']);
         });
-    };
-    IndexComponent.prototype.focusInput2 = function (event) {
-        var e = this._inputElement2.nativeElement;
-        e.focus();
-        console.log('Event Triggered', event);
     };
     return IndexComponent;
 }());
@@ -304,20 +301,16 @@ __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("talkInput1"),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], IndexComponent.prototype, "_inputElement1", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("talkInput2"),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
-], IndexComponent.prototype, "_inputElement2", void 0);
 IndexComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-index',
         template: __webpack_require__(163),
         styles: [__webpack_require__(153)]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _d || Object])
 ], IndexComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d;
 //# sourceMappingURL=index.component.js.map
 
 /***/ }),

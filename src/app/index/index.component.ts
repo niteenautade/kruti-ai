@@ -12,11 +12,10 @@ import { TypewriterService, TypewriterContent } from "ng2-typewriter";
 })
 export class IndexComponent implements OnInit, AfterViewInit {
  @ViewChild("talkInput1") private _inputElement1: ElementRef;
-
-    ngAfterViewInit(): void {
-        let e:any = this._inputElement1.nativeElement;
-        e.focus();
-    }
+  ngAfterViewInit(): void {
+      let e:any = this._inputElement1.nativeElement;
+      e.focus();
+  }
 
   contents: TypewriterContent[] = [];
   arr=[];
@@ -36,6 +35,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   user                 : string  = '';
   talkButtonClicked    : boolean = false;
   hideFirstTalkInputBox: boolean = false;
+  chatArray=[];
 
   ngOnInit(){}
   togglePage2(){
@@ -50,6 +50,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
       (res)=>{
         console.log('ress',res)
         this.data = res.json();
+        this.chatArray.push(this.data['result']['resolvedQuery']);
+        this.chatArray.push(this.data['result']['fulfillment']['speech']);
       })
     this.togglePage2();
     this.hideFirstTalkInputBox = true;
@@ -61,6 +63,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
       (res)=>{
         console.log('ress',res)
         this.data = res.json();
+        this.chatArray.push(this.data['result']['resolvedQuery']);
+        this.chatArray.push(this.data['result']['fulfillment']['speech']);
       })
   }
 }

@@ -41,8 +41,20 @@
         </span>
       </form>
       <div>
-        <div *ngIf="data.result" style="padding-top:20px;">
-          {{data.result.fulfillment.speech}}
+        <div *ngIf="chatArray.length > 0" style="padding-top:20px;">
+          <div class="row">
+            <div class="col-md-2 col-1"></div>
+            <div class="col-md-8 col-10">
+              <ul>
+                <li *ngFor="let chat of chatArray;let index=index">
+                  <div *ngIf="index%2==0">You:</div>
+                  <div *ngIf="index%2!=0">Kruti-AI:</div>
+                  <div>{{chat}}</div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-2 col-1"></div>
+          </div>
         </div>
       </div>
     </div>
