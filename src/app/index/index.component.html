@@ -31,15 +31,9 @@
   </div>
 </div>
 <div class="page2" *ngIf="talkButtonClicked" id="page2">
-  <div class="row" style="padding-top:30px;">
+  <div class="row" style="padding-top:30px;margin:0 auto;">
     <div class="col-md-3 col-1"></div>
     <div class="col-md-6 col-10">
-      <form autocomplete="off" class="input-group" #talkForm="ngForm">
-        <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput2>
-        <span class="input-group-btn">
-          <button type="submit" (click)="talkToKruti(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
-        </span>
-      </form>
       <div>
         <div *ngIf="chatArray.length > 0" style="padding-top:20px;">
           <div class="row">
@@ -47,8 +41,8 @@
             <div class="col-md-8 col-10">
               <ul>
                 <li *ngFor="let chat of chatArray;let index=index">
-                  <div *ngIf="index%2==0">You:</div>
-                  <div *ngIf="index%2!=0">Kruti-AI:</div>
+                  <div *ngIf="index%2==0" style="color:white">You:</div>
+                  <div *ngIf="index%2!=0" style="color:#19B5FE">Kruti-AI:</div>
                   <div>{{chat}}</div>
                 </li>
               </ul>
@@ -57,7 +51,16 @@
           </div>
         </div>
       </div>
+      <form autocomplete="off" class="input-group" #talkForm="ngForm" style="margin-bottom:20%">
+        <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput2>
+        <span class="input-group-btn">
+          <a scrollTo href="#bottom"> 
+            <button type="submit" (click)="talkToKruti(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
+          </a> 
+        </span>
+      </form>
     </div>
     <div class="col-md-3 col-1"></div>
   </div>
 </div>
+<div id="bottom"></div>
