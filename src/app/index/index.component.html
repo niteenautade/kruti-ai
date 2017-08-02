@@ -17,8 +17,8 @@
     <div class="col-md-3 col-1"></div>
     <div class="col-md-6 col-10">
       <div [hidden]="hideFirstTalkInputBox" style="padding:10px 10px 10px 10px;background-color:white">
-        <form class="input-group" #talkForm="ngForm">
-          <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput>
+        <form autocomplete="off" class="input-group" #talkForm="ngForm">
+          <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput1>
           <span class="input-group-btn">
             <a scrollTo href="#page2">
             <button type="submit" (click)="initialTalk(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
@@ -31,17 +31,17 @@
   </div>
 </div>
 <div class="page2" *ngIf="talkButtonClicked" id="page2">
-  <div class="row" style="margin-top:20px;">
+  <div class="row" style="padding-top:30px;">
     <div class="col-md-3 col-1"></div>
     <div class="col-md-6 col-10">
-      <form class="input-group" (ngSubmit)="talkToKruti(talkForm.value)" #talkForm="ngForm">
-        <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput>
+      <form autocomplete="off" class="input-group" #talkForm="ngForm">
+        <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput2>
         <span class="input-group-btn">
           <button type="submit" (click)="talkToKruti(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
         </span>
       </form>
       <div>
-        <div *ngIf="data.result">
+        <div *ngIf="data.result" style="padding-top:20px;">
           {{data.result.fulfillment.speech}}
         </div>
       </div>

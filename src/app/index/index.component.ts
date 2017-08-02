@@ -11,11 +11,10 @@ import { TypewriterService, TypewriterContent } from "ng2-typewriter";
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit, AfterViewInit {
- @ViewChild("talkInput")
-    private _inputElement: ElementRef;
+ @ViewChild("talkInput1") private _inputElement1: ElementRef;
 
     ngAfterViewInit(): void {
-        let e:any = this._inputElement.nativeElement;
+        let e:any = this._inputElement1.nativeElement;
         e.focus();
     }
 
@@ -46,6 +45,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   data='';
   initialTalk(data){
+    console.log('Initial Talk Method')
     this._http.post('getResponse',data).subscribe(
       (res)=>{
         console.log('ress',res)
@@ -56,11 +56,11 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   talkToKruti(data){
+    console.log('TalkToKriti Method')
     this._http.post('getResponse',data).subscribe(
       (res)=>{
         console.log('ress',res)
         this.data = res.json();
       })
-    this.togglePage2();
   }
 }
