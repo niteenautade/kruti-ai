@@ -9,6 +9,7 @@ import {ScrollToModule} from 'ng2-scroll-to';
 import { TypewriterModule } from "ng2-typewriter";
 import { TypewriterService, TypewriterContent } from "ng2-typewriter";
 import { SendableLinkComponent } from './sendable-link/sendable-link.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     ScrollToModule.forRoot(),
     FormsModule,
     HttpModule,
-    TypewriterModule
+    TypewriterModule,
+    ClipboardModule
   ],
   providers: [TypewriterService],
   bootstrap: [AppComponent]

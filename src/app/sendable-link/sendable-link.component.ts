@@ -7,16 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendableLinkComponent implements OnInit {
   nameOfThePerson:string;
+  nameInBtoA:string;
   sendableLink:string;
+  
   constructor() { }
 
   ngOnInit() {
   }
   clickedGetLink:boolean=false;
+  clickedCopyLink:boolean=false;
   getLink(data){
-    this.sendableLink = btoa(data.nameOfThePerson);
+    this.nameInBtoA = btoa(data.nameOfThePerson);
     this.clickedGetLink = true;
-    console.log(data.nameOfThePerson,' : ',this.sendableLink)
+    console.log(data.nameOfThePerson,' : ',this.nameInBtoA)
+    this.sendableLink = window.location.host+'/u/'+this.nameInBtoA;
   }
 
 }

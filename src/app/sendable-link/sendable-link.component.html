@@ -8,8 +8,14 @@
       </span>
     </form>
     <br>
-    <div>
-      <div *ngIf="clickedGetLink">Sendable Link: <a href="http://localhost:4200/u/{{sendableLink}}">http://localhost:4200/u/{{sendableLink}}</a></div>
+    <div *ngIf="clickedGetLink">
+      <div>Sendable Link:</div>
+      <div class="input-group">
+        <input [(ngModel)]="sendableLink" #sendableLinkInput class="form-control" readonly>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" [ngxClipboard]="sendableLinkInput" [class.btn-success]= "clickedCopyLink" (cbOnSuccess)="clickedCopyLink = true" style="cursor:pointer">Copy Link</button>
+        </span>
+      </div>
     </div>
   </div>
   <div class="col-md-3"></div>
