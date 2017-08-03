@@ -20,9 +20,9 @@
         <form autocomplete="off" class="input-group" #talkForm="ngForm">
           <input type="text" name="typedInput" [(ngModel)]="typedInput" placeholder="Talk to Me" class="form-control talkInput" #talkInput1>
           <span class="input-group-btn">
-            <a scrollTo href="#page2">
+            <!-- <a scrollTo href="#page2"> -->
             <button type="submit" (click)="initialTalk(talkForm.value)" class="btn btn-secondary" style="cursor:pointer">Talk</button>
-            </a>
+            <!-- </a> -->
           </span>
         </form>
       </div>

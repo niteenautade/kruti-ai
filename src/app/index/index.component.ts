@@ -60,15 +60,16 @@ export class IndexComponent implements OnInit, AfterViewInit {
   data='';
   initialTalk(data){
     console.log('Initial Talk Method')
+    this.togglePage2();
     this._http.post('getResponse',data).subscribe(
       (res)=>{
         console.log('ress',res)
         this.data = res.json();
         this.chatArray.push(this.data['result']['resolvedQuery']);
         this.chatArray.push(this.data['result']['fulfillment']['speech']);
+        window.scrollTo(0, document.body.scrollHeight);
+        this.hideFirstTalkInputBox = true;
       })
-    this.togglePage2();
-    this.hideFirstTalkInputBox = true;
     this.typedInput = '';
   }
 
