@@ -77,3 +77,12 @@ li:nth-child(even):after{
 	margin-top: -3.5px;
 	margin-right: -7px;
 }
+
+#chatConv::-webkit-scrollbar{
+  width: 8px;
+  background-color: white;
+}
+#chatConv::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #19B5FE;
+}
