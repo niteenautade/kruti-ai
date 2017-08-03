@@ -64,7 +64,7 @@ module.exports = "<router-outlet></router-outlet>"
 /***/ 163:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n        <div [hidden]=\"!hideFirstTalkInputBox\">\n          <h3 style=\"margin-top: 30px;\">Hope You Had Fun Using This Application!</h3>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div [hidden]=\"hideFirstTalkInputBox\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n        <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n          <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput1>\n          <span class=\"input-group-btn\">\n            <a scrollTo href=\"#page2\">\n            <button type=\"submit\" (click)=\"initialTalk(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n            </a>\n          </span>\n        </form>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n  <div class=\"row\" style=\"padding-top:30px;margin:0 auto;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div>\n        <div *ngIf=\"chatArray.length > 0\" style=\"padding-top:20px;\">\n          <div class=\"row\">\n            <div class=\"col-md-2 col-1\"></div>\n            <div class=\"col-md-8 col-10\">\n              <ul>\n                <li *ngFor=\"let chat of chatArray;let index=index\">\n                  <div *ngIf=\"index%2==0\" style=\"color:white\">You:</div>\n                  <div *ngIf=\"index%2!=0\" style=\"color:#19B5FE\">Kruti-AI:</div>\n                  <div>{{chat}}</div>\n                </li>\n              </ul>\n            </div>\n            <div class=\"col-md-2 col-1\"></div>\n          </div>\n        </div>\n      </div>\n      <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\" style=\"margin-bottom:20%\">\n        <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput2>\n        <span class=\"input-group-btn\">\n          <a scrollTo href=\"#bottom\"> \n            <button type=\"submit\" (click)=\"talkToKruti(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n          </a> \n        </span>\n      </form>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div id=\"bottom\"></div>"
+module.exports = "<div class=\"page1\">\n  <div class=\"row\" style=\"margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div class=\"text-center typeWriter\">\n        <typewriter [contents]=\"contents\" [erasable]=\"false\" [beforeType]=\"500\" [beforeStart]=\"0\" [afterEnd]=\"1000\" [delay]=\"0\"\n        [speed]=\"40\" [cursor]=\"'|'\" [cursorDelay]=\"-1\">\n        </typewriter>\n        <div [hidden]=\"!hideFirstTalkInputBox\">\n          <h3 style=\"margin-top: 30px;\">Hope You Had Fun Using This Application!</h3>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n  <div class=\"row\" style=\"margin-top:10%; margin-left:0px;margin-right:0px;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\">\n      <div [hidden]=\"hideFirstTalkInputBox\" style=\"padding:10px 10px 10px 10px;background-color:white\">\n        <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n          <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput1>\n          <span class=\"input-group-btn\">\n            <a scrollTo href=\"#page2\">\n            <button type=\"submit\" (click)=\"initialTalk(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n            </a>\n          </span>\n        </form>\n      </div>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n<div class=\"page2\" *ngIf=\"talkButtonClicked\" id=\"page2\">\n  <div class=\"row\" style=\"padding-top:30px;margin:0 auto;\">\n    <div class=\"col-md-3 col-1\"></div>\n    <div class=\"col-md-6 col-10\" style=\"height:100vh;\">\n      <div #chatConversation style=\"height:80%;overflow-y:auto;overflow-x:hidden\">\n        <div *ngIf=\"chatArray.length > 0\" style=\"padding-top:20px;\">\n          <div class=\"row\">\n            <div class=\"col-md-2 col-1\"></div>\n            <div class=\"col-md-8 col-10\">\n              <ul>\n                <li *ngFor=\"let chat of chatArray;let index=index\">\n                  <div *ngIf=\"index%2==0\" style=\"color:white\">You:</div>\n                  <div *ngIf=\"index%2!=0\" style=\"color:#19B5FE\">Kruti-AI:</div>\n                  <div>{{chat}}</div>\n                </li>\n              </ul>\n            </div>\n            <div class=\"col-md-2 col-1\"></div>\n          </div>\n        </div>\n      </div>\n      <form autocomplete=\"off\" class=\"input-group\" #talkForm=\"ngForm\">\n        <input type=\"text\" name=\"typedInput\" [(ngModel)]=\"typedInput\" placeholder=\"Talk to Me\" class=\"form-control talkInput\" #talkInput2>\n        <span class=\"input-group-btn\">\n            <button type=\"submit\" (click)=\"talkToKruti(talkForm.value)\" class=\"btn btn-secondary\" style=\"cursor:pointer\">Talk</button>\n        </span>\n      </form>\n    </div>\n    <div class=\"col-md-3 col-1\"></div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -268,6 +268,15 @@ var IndexComponent = (function () {
         var e = this._inputElement1.nativeElement;
         e.focus();
     };
+    IndexComponent.prototype.ngAfterViewChecked = function () {
+        this.scrollToBottom();
+    };
+    IndexComponent.prototype.scrollToBottom = function () {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        }
+        catch (err) { }
+    };
     IndexComponent.prototype.ngOnInit = function () { };
     IndexComponent.prototype.togglePage2 = function () {
         console.log("Toggle Page 2");
@@ -301,16 +310,20 @@ __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("talkInput1"),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], IndexComponent.prototype, "_inputElement1", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('chatConversation'),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
+], IndexComponent.prototype, "myScrollContainer", void 0);
 IndexComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-index',
         template: __webpack_require__(163),
         styles: [__webpack_require__(153)]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _e || Object])
 ], IndexComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=index.component.js.map
 
 /***/ }),

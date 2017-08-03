@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit,ElementRef,ViewChild  } from '@angular/core';
+import { Component, OnInit,AfterViewInit,ElementRef,ViewChild,AfterViewChecked  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import {ScrollToModule} from 'ng2-scroll-to';
@@ -16,6 +16,18 @@ export class IndexComponent implements OnInit, AfterViewInit {
       let e:any = this._inputElement1.nativeElement;
       e.focus();
   }
+
+  @ViewChild('chatConversation') private myScrollContainer: ElementRef;
+
+    ngAfterViewChecked() {        
+        this.scrollToBottom();        
+    } 
+
+    scrollToBottom(): void {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch(err) { }                 
+    }
 
   contents: TypewriterContent[] = [];
   arr=[];
@@ -65,6 +77,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this.data = res.json();
         this.chatArray.push(this.data['result']['resolvedQuery']);
         this.chatArray.push(this.data['result']['fulfillment']['speech']);
+        
       })
   }
 }
