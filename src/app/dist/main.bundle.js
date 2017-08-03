@@ -250,6 +250,7 @@ var IndexComponent = (function () {
         this.user = '';
         this.talkButtonClicked = false;
         this.hideFirstTalkInputBox = false;
+        this.typedInput = '';
         this.chatArray = [];
         this.data = '';
         this.route.params.subscribe(function (params) {
@@ -293,6 +294,7 @@ var IndexComponent = (function () {
         });
         this.togglePage2();
         this.hideFirstTalkInputBox = true;
+        this.typedInput = '';
     };
     IndexComponent.prototype.talkToKruti = function (data) {
         var _this = this;
@@ -302,6 +304,7 @@ var IndexComponent = (function () {
             _this.data = res.json();
             _this.chatArray.push(_this.data['result']['resolvedQuery']);
             _this.chatArray.push(_this.data['result']['fulfillment']['speech']);
+            _this.typedInput = '';
         });
     };
     return IndexComponent;
@@ -311,8 +314,12 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], IndexComponent.prototype, "_inputElement1", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('chatConversation'),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("talkInput2"),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
+], IndexComponent.prototype, "_inputElement2", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('chatConversation'),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _c || Object)
 ], IndexComponent.prototype, "myScrollContainer", void 0);
 IndexComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -320,10 +327,10 @@ IndexComponent = __decorate([
         template: __webpack_require__(163),
         styles: [__webpack_require__(153)]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_typewriter__["b" /* TypewriterService */]) === "function" && _f || Object])
 ], IndexComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=index.component.js.map
 
 /***/ }),

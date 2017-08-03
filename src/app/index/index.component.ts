@@ -12,17 +12,18 @@ import { TypewriterService, TypewriterContent } from "ng2-typewriter";
 })
 export class IndexComponent implements OnInit, AfterViewInit {
  @ViewChild("talkInput1") private _inputElement1: ElementRef;
+ @ViewChild("talkInput2") private _inputElement2: ElementRef;
   ngAfterViewInit(): void {
       let e:any = this._inputElement1.nativeElement;
       e.focus();
   }
-
   @ViewChild('chatConversation') private myScrollContainer: ElementRef;
 
     ngAfterViewChecked() {        
-        this.scrollToBottom();        
+        this.scrollToBottom();  
     } 
 
+  
     scrollToBottom(): void {
         try {
             this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
@@ -47,7 +48,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
   user                 : string  = '';
   talkButtonClicked    : boolean = false;
   hideFirstTalkInputBox: boolean = false;
-  chatArray=[];
+  typedInput           : string  = '';
+  chatArray            = [];
 
   ngOnInit(){}
   togglePage2(){
@@ -67,6 +69,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
       })
     this.togglePage2();
     this.hideFirstTalkInputBox = true;
+    this.typedInput = '';
   }
 
   talkToKruti(data){
@@ -77,7 +80,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this.data = res.json();
         this.chatArray.push(this.data['result']['resolvedQuery']);
         this.chatArray.push(this.data['result']['fulfillment']['speech']);
-        
+        this.typedInput = '';
       })
   }
 }
